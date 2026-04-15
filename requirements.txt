@@ -1,0 +1,8 @@
+lightgbm
+mlflow
+requests
+pandas
+numpy
+holidays
+matplotlib
+scikit-learn
