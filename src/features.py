@@ -15,11 +15,10 @@ def cechy_pogodowe(df_input):
     
     # Święta
     pl_holidays = holidays.Poland()
-    # Zabezpieczenie przed upewnieniem się, że indeks jest typu datetime przed odczytaniem właściwości date
+
     dates = pd.to_datetime(df_feat.index).date
     df_feat["is_holiday"] = [1 if d in pl_holidays else 0 for d in dates]
     
-    # Logika biznesowa (np. chłód)
     df_feat["chlod"] = np.where(df_feat["temp_mean"] < 7, 1, 0)
     return df_feat
 
