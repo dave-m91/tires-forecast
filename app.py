@@ -79,6 +79,14 @@ with st.sidebar:
                 st.error(f"Błąd podczas trenowania: {e}")
     last_date = get_last_run_date(run_id)
     st.caption(f"Ostatnie szkolenie: {last_date}")
+
+    for _ in range(50):
+        st.sidebar.write("")
+    
+    st.divider()
+    if st.button("Wyczyść cache i przeładuj apliakcję", width="stretch"):
+        st.cache_data.clear()
+        st.rerun()
             
 
 tab1, tab2 = st.tabs(["Prognoza modelu", "Istotność cech"])

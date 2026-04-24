@@ -3,7 +3,7 @@ import requests
 import datetime as dt
 import streamlit as st
 
-@st.cache_data
+@st.cache_data(ttl=43200)
 def load_data(path):
     print("Ładowanie danych")
     df = pd.read_csv(path, decimal=",")
@@ -17,7 +17,7 @@ def load_data(path):
     df.rename(columns={'Units Sold ST-010': 'target'}, inplace=True)
     return df
 
-@st.cache_data
+@st.cache_data(ttl=43200)
 def load_weather_data():
     print("Pobieranie danych pogodowych")
     przedwczoraj = dt.datetime.now() - dt.timedelta(days=2)
@@ -70,7 +70,7 @@ def load_weather_data():
         print(f"Błąd podczas pobierania danych. Kod odpowiedzi: {response.status_code}")
 
 
-@st.cache_data
+@st.cache_data(ttl=43200)
 def load_forecast_weather():
     print("Pobieranie danych pogodowych z przyszłosci")
     url_forecast = "https://api.open-meteo.com/v1/forecast"
