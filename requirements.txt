@@ -6,3 +6,5 @@ numpy
 holidays
 matplotlib
 scikit-learn
+apache-airflow==2.8.1
+streamlit
